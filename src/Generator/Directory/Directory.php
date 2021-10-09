@@ -1,33 +1,52 @@
 <?php
 
-namespace LeetPHPTemplate\Generator\Directory;
-
-use LeetPHPTemplate\Generator\File\File;
+namespace PHPAlgorithmScaffold\Generator\Directory;
 
 /**
  * Class Directory
- * @package LeetPHPTemplate\Generator\Directory
+ *
+ * @package PHPAlgorithmScaffold\Generator\Directory
  */
-class Directory {
-  
-  protected $file;
-  
-  /**
-   * Directory constructor.
-   */
-  public function __construct(){
-    $this->file = new File();
-  }
-  
-  /**
-   * @param $name
-   */
-  public function create($name) {
-    $currentDir = getcwd();
-    $srcPath = $currentDir . '/src';
-    if (!file_exists($srcPath . '/' . $name)) {
-      mkdir($srcPath . '/' . $name);
+class Directory implements DirectoryInterface {
+    
+    /**
+     * @var string
+     *   The name of the directory.
+     */
+    protected string $name;
+    
+    /**
+     * Directory constructor.
+     */
+    public function __construct(){
     }
-  }
-  
+    
+    /**
+     * {@inheritDoc}
+     */
+    public function create(string $name): bool {
+        $currentDir = getcwd();
+        $srcPath = $currentDir . '/src';
+        if (!file_exists($srcPath . '/' . $name)) {
+            mkdir($srcPath . '/' . $name);
+        }
+        return TRUE;
+    }
+    
+    /**
+     * @inheritDoc
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+    
+    /**
+     * @inheritDoc
+     */
+    public function setName(string $name): DirectoryInterface
+    {
+        $this->name = $name;
+        return $this;
+    }
 }

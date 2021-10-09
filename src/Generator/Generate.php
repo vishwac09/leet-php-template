@@ -1,57 +1,55 @@
 <?php
 
-namespace LeetPHPTemplate\Generator;
+namespace PHPAlgorithmScaffold\Generator;
 
-use LeetPHPTemplate\Generator\Directory\Directory;
-use LeetPHPTemplate\Generator\UnitTest\UnitTest;
+use PHPAlgorithmScaffold\Generator\Directory\Directory;
+
 use Nette\PhpGenerator\ClassType;
 
 /**
  * Class Generate
- * @package LeetPHPTemplate\Generator
+ * @package PHPAlgorithmScaffold\Generator
  */
 class Generate
 {
   /**
    * @var Directory
+   *   The Directory instance.
    */
-  protected $directory;
+  protected Directory $directory;
   
   /**
-   * @var UnitTest
-   */
-  protected $unitTest;
-  
-  /**
-   * Generate constructor.
+   * Default constructor.
    */
   public function __construct() {
     $this->directory = new Directory();
-    $this->unitTest = new UnitTest();
   }
   
   /**
-   * Function
+   * Entry point, which executes each step, to get the title from the user,
+   * create directory and related files,
    */
   public function generateCodeTemplates() {
     // # First step is getting the problem title
     $problemTitle = $this->getProblemTitle();
-    printf( "\e[35m Using Text as => \e \e[33m %s \e" . PHP_EOL, $problemTitle);
-    //# We have the title, let start with creating the directory, file and a Test file.
-    printf( "\e[34m Creating directory with name %s under src directory.\e", $problemTitle);
+    printf( "\e[35mUsing Text as = \e \e[33m %s \e" . PHP_EOL, $problemTitle);
+    //# We have the title, let start with creating the directory, file and a UnitTest file.
+    printf( "\e[35mCreating directory with name %s under src.\e", $problemTitle);
     $this->directory->create($problemTitle);
   }
   
   /**
-   * @return string|string[]|null
+   * Get the problem title, which user input on the terminal.
+   *
+   * @return string
    */
-  public function getProblemTitle() {
+  public function getProblemTitle(): string
+  {
     printf("\e[32mEnter #Problem title all special characters, spaces will be removed.\e\n");
     $problemTitle = fgets(STDIN);
     if (empty(trim($problemTitle))) {
       exit(PHP_EOL . "\e[31mExiting #Problem Title cannot be empty\e" . PHP_EOL);
     }
-    $problemTitle = preg_replace('/[^A-Za-z0-9\-]/', '', $problemTitle);
-    return $problemTitle;
+    return preg_replace('/[^A-Za-z0-9\-]/', '', $problemTitle);
   }
 }

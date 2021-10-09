@@ -1,6 +1,6 @@
 {
-    "name": "vishwac09/leet-template-generator",
-    "description": "Leetcode template generator. When solving leetcode examples on local machine, have setup a structure to test and execute the solutions.",
+    "name": "vishwac09/php-algo-scaffold",
+    "description": "PHP code template generator. When solving algorithmic examples on local machine, have setup a structure to test and execute the solutions.",
     "type": "project",
     "license": "GNU GENERAL PUBLIC LICENSE",
     "authors": [
@@ -11,12 +11,12 @@
     ],
     "autoload": {
       "psr-4": {
-        "LeetPHPTemplate\\": "src/"
+        "PHPAlgorithmScaffold\\": "src/"
       }
     },
     "require": {
         "nette/php-generator": "^3.5",
         "platformsh/cli": "^3.68"
     },
-    "bin": ["bin/lpt"]
+    "bin": ["bin/pas"]
 }
