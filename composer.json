@@ -15,8 +15,10 @@
       }
     },
     "require": {
-        "nette/php-generator": "^3.5",
-        "platformsh/cli": "^3.68"
+        "nette/php-generator": "^3.5"
     },
-    "bin": ["bin/pas"]
+    "bin": ["bin/pas"],
+    "require-dev": {
+        "squizlabs/php_codesniffer": "*"
+    }
 }

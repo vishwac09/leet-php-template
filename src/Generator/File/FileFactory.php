@@ -9,7 +9,19 @@ namespace PHPAlgorithmScaffold\Generator\File;
  */
 class FileFactory
 {
-    public function createFile() {
-    
+    /**
+     * Returns the instance of the required file by type.
+     *
+     * @param $type
+     * @return Problem|UnitTest
+     */
+    public function getFileInstance($type)
+    {
+        // @todo change later.
+        if ($type === 'problem') {
+            return new Problem();
+        } elseif ($type === 'unit') {
+            return new UnitTest();
+        }
     }
 }

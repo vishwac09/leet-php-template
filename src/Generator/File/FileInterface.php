@@ -2,7 +2,6 @@
 
 namespace PHPAlgorithmScaffold\Generator\File;
 
-
 interface FileInterface
 {
     /**

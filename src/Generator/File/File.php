@@ -3,7 +3,7 @@
 namespace PHPAlgorithmScaffold\Generator\File;
 
 /**
- * Class Problem
+ * Abstract Class Problem.
  * @package PHPAlgorithmScaffold\Generator\File
  */
 abstract class File implements FileInterface
@@ -60,5 +60,5 @@ abstract class File implements FileInterface
      *
      * @return bool
      */
-    abstract function create(): bool;
+    abstract public function create(): bool;
 }

@@ -1,8 +1,6 @@
 <?php
 
-
 namespace PHPAlgorithmScaffold\Generator\Directory;
-
 
 interface DirectoryInterface
 {
@@ -15,6 +13,13 @@ interface DirectoryInterface
      * @return bool
      */
     public function create(string $name): bool;
+  
+    /**
+     * Create the Problem and the unit test case file.
+     *
+     * @return bool
+     */
+    public function createFiles(): bool;
     
     /**
      * Returns the name of the Directory.
