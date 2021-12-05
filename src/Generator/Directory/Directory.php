@@ -16,6 +16,12 @@ class Directory implements DirectoryInterface
      *   The fileFactory instance.
      */
     protected FileFactory $fileFactory;
+  
+    /**
+     * @var string
+     *   PSR4 path
+     */
+    protected string $psrPath = 'src';
     
     /**
      * @var string
@@ -36,24 +42,26 @@ class Directory implements DirectoryInterface
      */
     public function create(string $name): bool
     {
-        $currentDir = getcwd();
         $this->setName($name);
-        $srcPath = $currentDir . '/src';
-        if (!file_exists($srcPath . '/' . $name)) {
-            mkdir($srcPath . '/' . $name);
+        $srcPath = getcwd() . '/' . $this->psrPath;
+        $directoryPath = $srcPath . '/' . $name;
+        if (!file_exists($directoryPath)) {
+            mkdir($directoryPath);
         }
+        $this->createFiles($directoryPath);
         return true;
     }
     
     /**
      * {@inheritDoc}
      */
-    public function createFiles(): bool
+    public function createFiles(string $directoryPath): bool
     {
         $problem = $this->fileFactory->getFileInstance('problem');
-        $problem->create($this->getName());
+        $problem->create($directoryPath, $this->getName());
         $unitTest = $this->fileFactory->getFileInstance('unit');
-        $unitTest->create($this->getName());
+        $currentPath = getcwd() . '/tests';
+        $unitTest->create($currentPath, $this->getName());
         return true;
     }
     

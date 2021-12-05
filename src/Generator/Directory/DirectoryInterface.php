@@ -17,9 +17,12 @@ interface DirectoryInterface
     /**
      * Create the Problem and the unit test case file.
      *
+     * @param string $directoryPath
+     *   The path of the created directory.
+     *
      * @return bool
      */
-    public function createFiles(): bool;
+    public function createFiles(string $directoryPath): bool;
     
     /**
      * Returns the name of the Directory.

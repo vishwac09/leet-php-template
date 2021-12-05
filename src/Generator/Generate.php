@@ -4,6 +4,8 @@ namespace PHPAlgorithmScaffold\Generator;
 
 use PHPAlgorithmScaffold\Generator\Directory\Directory;
 
+require_once __DIR__ . '/../../../../autoload.php';
+
 /**
  * Class Generate
  * @package PHPAlgorithmScaffold\Generator

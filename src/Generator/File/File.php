@@ -53,12 +53,17 @@ abstract class File implements FileInterface
         $this->path = $path;
         return $this;
     }
-    
+  
     /**
      * Create file, we would be adding default code snippets.
      * Implementation will change as per the Files we are creating hence abstract.
      *
+     * @param string $path
+     *   The path where to create the files.
+     * @param string $name
+     *   The name of the file to create.
+     *
      * @return bool
      */
-    abstract public function create(): bool;
+    abstract public function create(string $path, string $name): bool;
 }
