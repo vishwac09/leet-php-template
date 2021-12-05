@@ -2,7 +2,7 @@
     "name": "vishwac09/php-algo-scaffold",
     "description": "PHP code template generator. When solving algorithmic examples on local machine, have setup a structure to test and execute the solutions.",
     "type": "project",
-    "license": "GNU GENERAL PUBLIC LICENSE",
+    "license": "proprietary",
     "authors": [
         {
             "name": "Vishwa Chikate",
