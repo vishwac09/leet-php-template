@@ -4,6 +4,8 @@ namespace PHPAlgorithmScaffold\Generator\Directory;
 
 use PHPAlgorithmScaffold\Generator\File\FileFactory;
 
+use League\CLImate\CLImate;
+
 /**
  * Class Directory
  *
@@ -12,29 +14,36 @@ use PHPAlgorithmScaffold\Generator\File\FileFactory;
 class Directory implements DirectoryInterface
 {
     /**
+     * @var CLImate
+     *   The CLImate instance.
+     */
+    protected CLImate $climate;
+
+    /**
      * @var FileFactory
      *   The fileFactory instance.
      */
     protected FileFactory $fileFactory;
-  
-    /**
-     * @var string
-     *   PSR4 path
-     */
-    protected string $psrPath = 'src';
     
     /**
      * @var string
      *   The name of the directory.
      */
     protected string $name;
-    
+
+    /**
+     * @var string
+     *   PSR4 path
+     */
+    protected string $psrPath = 'src';
+
     /**
      * Directory constructor.
      */
     public function __construct()
     {
         $this->fileFactory = new FileFactory();
+        $this->climate = new CLImate();
     }
     
     /**
@@ -43,10 +52,20 @@ class Directory implements DirectoryInterface
     public function create(string $name): bool
     {
         $this->setName($name);
+        $this->climate->magenta()->out(
+                'Enter the Directory name default (src)'
+                );
+        $tempName = fgets(STDIN);
+        if (!empty(trim($tempName))) {
+            $this->psrPath = $tempName;
+        }
         $srcPath = getcwd() . '/' . $this->psrPath;
         $directoryPath = $srcPath . '/' . $name;
         if (!file_exists($directoryPath)) {
             mkdir($directoryPath);
+            $this->climate->green()->out(
+                    'Directory ' . $directoryPath . ' created'
+                    );
         }
         $this->createFiles($directoryPath);
         return true;
@@ -60,7 +79,13 @@ class Directory implements DirectoryInterface
         $problem = $this->fileFactory->getFileInstance('problem');
         $problem->create($directoryPath, $this->getName());
         $unitTest = $this->fileFactory->getFileInstance('unit');
+        $this->climate->magenta()->out(
+                'Considering unit test case path as "tests"'
+                );
         $currentPath = getcwd() . '/tests';
+        if (!file_exists($currentPath)) {
+            mkdir($currentPath);
+        }
         $unitTest->create($currentPath, $this->getName());
         return true;
     }
