@@ -12,13 +12,13 @@ abstract class File implements FileInterface
      * @var string $name
      *   The name of the file ot be created.
      */
-    protected string $name;
+    protected $name;
     
     /**
      * @var string $path
      *   The path where the file will be created.
      */
-    protected string $path;
+    protected $path;
     
     /**
      * @inheritDoc

@@ -17,25 +17,25 @@ class Directory implements DirectoryInterface
      * @var CLImate
      *   The CLImate instance.
      */
-    protected CLImate $climate;
+    protected $climate;
 
     /**
      * @var FileFactory
      *   The fileFactory instance.
      */
-    protected FileFactory $fileFactory;
+    protected $fileFactory;
     
     /**
      * @var string
      *   The name of the directory.
      */
-    protected string $name;
+    protected $name;
 
     /**
      * @var string
      *   PSR4 path
      */
-    protected string $psrPath = 'src';
+    protected $psrPath = 'src';
 
     /**
      * Directory constructor.
@@ -55,12 +55,13 @@ class Directory implements DirectoryInterface
         $this->climate->magenta()->out(
                 'Enter the Directory name default (src)'
                 );
-        $tempName = fgets(STDIN);
+        $tempName = trim(fgets(STDIN));
         if (!empty(trim($tempName))) {
             $this->psrPath = $tempName;
         }
         $srcPath = getcwd() . '/' . $this->psrPath;
         $directoryPath = $srcPath . '/' . $name;
+        
         if (!file_exists($directoryPath)) {
             mkdir($directoryPath);
             $this->climate->green()->out(
@@ -78,6 +79,9 @@ class Directory implements DirectoryInterface
     {
         $problem = $this->fileFactory->getFileInstance('problem');
         $problem->create($directoryPath, $this->getName());
+        $this->climate->green()->out(
+          'Problem file created'
+        );
         $unitTest = $this->fileFactory->getFileInstance('unit');
         $this->climate->magenta()->out(
                 'Considering unit test case path as "tests"'
@@ -87,6 +91,9 @@ class Directory implements DirectoryInterface
             mkdir($currentPath);
         }
         $unitTest->create($currentPath, $this->getName());
+        $this->climate->green()->out(
+          'Unit test case file created'
+        );
         return true;
     }
     

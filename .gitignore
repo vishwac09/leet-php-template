@@ -4,3 +4,5 @@
 .idea
 /nbproject/private/
 /nbproject
+.DS_Store
+src/.DS_Store

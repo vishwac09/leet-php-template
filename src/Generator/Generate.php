@@ -16,13 +16,13 @@ class Generate
      * @var CLImate
      *   The CLImate instance.
      */
-    protected CLImate $climate;
+    protected $climate;
 
     /**
      * @var Directory
      *   The Directory instance.
      */
-    protected Directory $directory;
+    protected $directory;
     
     /**
      * Default constructor.
