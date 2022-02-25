@@ -3,7 +3,6 @@
 namespace PHPAlgorithmScaffold\Generator\Directory;
 
 use PHPAlgorithmScaffold\Generator\File\FileFactory;
-
 use League\CLImate\CLImate;
 
 /**
@@ -24,7 +23,7 @@ class Directory implements DirectoryInterface
      *   The fileFactory instance.
      */
     protected $fileFactory;
-    
+
     /**
      * @var string
      *   The name of the directory.
@@ -45,7 +44,7 @@ class Directory implements DirectoryInterface
         $this->fileFactory = new FileFactory();
         $this->climate = new CLImate();
     }
-    
+
     /**
      * {@inheritDoc}
      */
@@ -53,25 +52,25 @@ class Directory implements DirectoryInterface
     {
         $this->setName($name);
         $this->climate->magenta()->out(
-                'Enter the Directory name default (src)'
-                );
+            'Enter the Directory name default (src)'
+        );
         $tempName = trim(fgets(STDIN));
         if (!empty(trim($tempName))) {
             $this->psrPath = $tempName;
         }
         $srcPath = getcwd() . '/' . $this->psrPath;
         $directoryPath = $srcPath . '/' . $name;
-        
+
         if (!file_exists($directoryPath)) {
             mkdir($directoryPath);
             $this->climate->green()->out(
-                    'Directory ' . $directoryPath . ' created'
-                    );
+                'Directory ' . $directoryPath . ' created'
+            );
         }
         $this->createFiles($directoryPath);
         return true;
     }
-    
+
     /**
      * {@inheritDoc}
      */
@@ -80,23 +79,23 @@ class Directory implements DirectoryInterface
         $problem = $this->fileFactory->getFileInstance('problem');
         $problem->create($directoryPath, $this->getName());
         $this->climate->green()->out(
-          'Problem file created'
+            'Problem file created'
         );
         $unitTest = $this->fileFactory->getFileInstance('unit');
         $this->climate->magenta()->out(
-                'Considering unit test case path as "tests"'
-                );
+            'Considering unit test case path as "tests"'
+        );
         $currentPath = getcwd() . '/tests';
         if (!file_exists($currentPath)) {
             mkdir($currentPath);
         }
         $unitTest->create($currentPath, $this->getName());
         $this->climate->green()->out(
-          'Unit test case file created'
+            'Unit test case file created'
         );
         return true;
     }
-    
+
     /**
      * @inheritDoc
      */
@@ -104,7 +103,7 @@ class Directory implements DirectoryInterface
     {
         return $this->name;
     }
-    
+
     /**
      * @inheritDoc
      */

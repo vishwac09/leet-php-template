@@ -3,7 +3,6 @@
 namespace PHPAlgorithmScaffold\Generator;
 
 use PHPAlgorithmScaffold\Generator\Directory\Directory;
-
 use League\CLImate\CLImate;
 
 /**
@@ -23,7 +22,7 @@ class Generate
      *   The Directory instance.
      */
     protected $directory;
-    
+
     /**
      * Default constructor.
      */
@@ -32,7 +31,7 @@ class Generate
         $this->directory = new Directory();
         $this->climate = new CLImate();
     }
-    
+
     /**
      * Entry point, which executes each step, to get the title from the user,
      * create directory and related files,
@@ -44,11 +43,11 @@ class Generate
         // # First step is getting the problem title
         $problemTitle = $this->getProblemTitle();
         $this->climate->magenta()->out('Using Text as = ' . $problemTitle);
-        //# We have the title, let start with creating the directory, 
+        //# We have the title, let start with creating the directory,
         //file and a UnitTest file.
         $this->directory->create($problemTitle);
     }
-    
+
     /**
      * Get the problem title, which user input on the terminal.
      *

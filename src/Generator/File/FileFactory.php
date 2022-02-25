@@ -1,6 +1,5 @@
 <?php
 
-
 namespace PHPAlgorithmScaffold\Generator\File;
 
 /**

@@ -10,7 +10,7 @@ interface FileInterface
      * @return string
      */
     public function getName(): string;
-    
+
     /**
      * Sets the name of the File.
      *
@@ -20,14 +20,14 @@ interface FileInterface
      * @return FileInterface
      */
     public function setName(string $name): FileInterface;
-    
+
     /**
      * Get the path where the file is created.
      *
      * @return string
      */
     public function getPath(): string;
-    
+
     /**
      * Set the path of the directory where the file would be created.
      *

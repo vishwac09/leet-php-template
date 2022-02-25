@@ -13,7 +13,7 @@ interface DirectoryInterface
      * @return bool
      */
     public function create(string $name): bool;
-  
+
     /**
      * Create the Problem and the unit test case file.
      *
@@ -23,14 +23,14 @@ interface DirectoryInterface
      * @return bool
      */
     public function createFiles(string $directoryPath): bool;
-    
+
     /**
      * Returns the name of the Directory.
      *
      * @return string
      */
     public function getName(): string;
-    
+
     /**
      * Set the name of the Directory.
      *

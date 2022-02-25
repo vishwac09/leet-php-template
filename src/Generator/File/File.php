@@ -13,13 +13,13 @@ abstract class File implements FileInterface
      *   The name of the file ot be created.
      */
     protected $name;
-    
+
     /**
      * @var string $path
      *   The path where the file will be created.
      */
     protected $path;
-    
+
     /**
      * @inheritDoc
      */
@@ -27,7 +27,7 @@ abstract class File implements FileInterface
     {
         return $this->name;
     }
-    
+
     /**
      * @inheritDoc
      */
@@ -36,7 +36,7 @@ abstract class File implements FileInterface
         $this->name = $name;
         return $this;
     }
-    
+
     /**
      * @inheritDoc
      */
@@ -44,7 +44,7 @@ abstract class File implements FileInterface
     {
         return $this->path;
     }
-    
+
     /**
      * @inheritDoc
      */
@@ -53,7 +53,7 @@ abstract class File implements FileInterface
         $this->path = $path;
         return $this;
     }
-  
+
     /**
      * Create file, we would be adding default code snippets.
      * Implementation will change as per the Files we are creating hence abstract.
