@@ -1,7 +1,7 @@
 {
     "name": "vishwac09/php-algo-scaffold",
     "description": "When solving algorithmic examples on local machine (leetcode.com), this package allows me to create executable/test files faster.",
-    "type": "project",
+    "type": "library",
     "license": "proprietary",
     "authors": [
         {

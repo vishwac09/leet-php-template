@@ -3,6 +3,16 @@ Changelog
 
 --------
 
+## 1.0.2
+
+### Releasing 1.0.1 version of the library.
+### Deleting older versions/tags
+
+## Fixes 
+   Change project type to library
+
+--------
+
 ## 1.0.1
 
 ### Releasing 1.0.1 version of the library.
