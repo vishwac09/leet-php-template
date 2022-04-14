@@ -89,7 +89,7 @@ class Directory implements DirectoryInterface
         if (!file_exists($currentPath)) {
             mkdir($currentPath);
         }
-        $unitTest->create($currentPath, $this->getName());
+        $unitTest->create($currentPath, $this->getName() . 'Test');
         $this->climate->green()->out(
             'Unit test case file created'
         );
