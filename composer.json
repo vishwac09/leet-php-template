@@ -15,6 +15,7 @@
       }
     },
     "require": {
+        "php": "^8.0",
         "nette/php-generator": "^3.5",
         "league/climate": "^3.8"
     },

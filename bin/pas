@@ -1,5 +1,6 @@
 #!/usr/bin/php
 #!/usr/bin/local/php
+#!/usr/local/bin/php
 <?php
 
 if (file_exists(__DIR__ . '/../../../autoload.php')) {
